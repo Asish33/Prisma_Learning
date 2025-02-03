@@ -13,13 +13,12 @@ const client_1 = require("@prisma/client");
 const client = new client_1.PrismaClient();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield client.todos.create({
-            data: {
+        const user = yield client.todos.findFirst({
+            where: {
                 username: "Asish",
-                name: "Asish",
-                done: false
-            }
+            },
         });
+        console.log(user);
     });
 }
 main();

@@ -1,15 +1,14 @@
-import {PrismaClient} from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
 
 const client = new PrismaClient();
 
-async function main(){
-await client.todos.create({
-    data:{
-        username: "Asish",
-        name:"Asish",
-        done:false
-    }
-})
+async function main() {
+  const user = await client.todos.findFirst({
+    where: {
+      username: "Asish",
+    },
+  });
+  console.log(user);
 }
 
 main();
