@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Todos {
-  id       Int     @id
+  id       Int     @id @default(autoincrement())
   name     String
   username String
   done     Boolean
