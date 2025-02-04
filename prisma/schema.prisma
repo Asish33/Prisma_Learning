@@ -14,8 +14,16 @@ datasource db {
 }
 
 model Todos {
-  id       Int     @id @default(autoincrement())
-  name     String
-  username String
+  todo_id       Int     @id @default(autoincrement())
+  thing    String
   done     Boolean
+  user_id   Int
+  user     User   @relation(fields: [user_id], references: [user_id])
+}
+
+model User {
+  user_id       Int     @id @default(autoincrement())
+  username String       @unique
+  email    String
+  todos    Todos[]
 }

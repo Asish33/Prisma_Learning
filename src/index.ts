@@ -3,10 +3,13 @@ import { PrismaClient } from "@prisma/client";
 const client = new PrismaClient();
 
 async function main() {
-  const user = await client.todos.findFirst({
+  const user = await client.user.findFirst({
     where: {
-      username: "Asish",
+      user_id: 1,
     },
+    include:{
+      todos:true
+    }
   });
   console.log(user);
 }
